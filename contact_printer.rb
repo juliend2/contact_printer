@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'pdfkit'
+# require 'pdfkit'
 
 module ContactPrinter
 
@@ -8,12 +8,28 @@ module ContactPrinter
       @path_to_contact = path_to_contact
     end
 
-    def to_html
-    end
-
     def text
       return @text unless @text.nil?
       @text = File.open(@path_to_contact).read
+    end
+
+    def name
+      text.split(/\n/).first
+    end
+
+    def phones
+      lines = (text + "\n\n").match(/Phones\n------\n(.*?)\n\n/m)[1]
+      if lines
+        "<ul>" << lines.split(/\n/).map{ |l| 
+          "<li>#{ l.match(/\* (.*)/)[1] }</li>" 
+        }.join('') << "</ul>"
+      end
+    end
+
+    def to_html
+      %{<h2>#{name}</h2>
+#{phones}
+      }
     end
   end
 
@@ -31,6 +47,6 @@ module ContactPrinter
 
 end
 
-contact_printer = ContactPrinter::Printer.new '/Users/jdesrosiers/Dropbox/perso/contacts'
-puts contact_printer.contacts
+# contact_printer = ContactPrinter::Printer.new '/Users/jdesrosiers/Dropbox/perso/contacts'
+# puts contact_printer.contacts[3].to_html
 
