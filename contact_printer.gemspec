@@ -20,6 +20,13 @@ Gem::Specification.new do |s|
   s.bindir        = 'bin'
   s.require_paths = ["lib"]
 
+  s.post_install_message = %{Please create a contact_printer.yml in your contacts directory that has this format:
+contacts:
+- antony-chevrolet
+- jean-qwerty
+- john-doe
+}
+
   s.add_runtime_dependency "pdfkit", '~> 0.5.2'
   s.add_development_dependency "rspec", '~> 2.8.0'
 end

@@ -1,9 +1,3 @@
-require 'rubygems'
-require "bundler"
-Bundler.require :default
-require 'yaml'
-require 'tmpdir'
-
 module ContactPrinter
 
   class Printer

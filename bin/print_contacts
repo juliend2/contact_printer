@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'rubygems'
+$:.unshift(File.join(File.dirname(__FILE__), "/../lib"))
 require 'contact_printer'
 
 args = ARGV.clone
