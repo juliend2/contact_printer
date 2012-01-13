@@ -6,6 +6,7 @@ module ContactPrinter
       @path_to_config = path_to_config_file
       @config = YAML::load File.open(@path_to_config)
       @contact_files = Dir.glob("#{@path_to_contacts}/*.md")
+      check_files_exist!
     end
 
     # @return Array of Contact objects
@@ -16,6 +17,15 @@ module ContactPrinter
       }.map {|file|
         Contact.new file
       }
+    end
+
+    def check_files_exist!
+      selected_contacts.each do |contact|
+        unless File.exist?(full_path(contact))
+          raise "#{full_path(contact)} does not exist"
+          exit
+        end
+      end
     end
 
     # @return String
@@ -37,8 +47,15 @@ module ContactPrinter
       Dir.mktmpdir do |dir|
         path = "#{dir}/tmp.pdf"
         render.to_file(path)
-        system("lpr", path) or raise "lpr failed"
+        puts "Printing..."
+        # system("lpr", path) or raise "lpr failed"
       end
+    end
+
+    private
+
+    def full_path(basename)
+      "#{@path_to_contacts}/#{basename}.md"
     end
   end
 
