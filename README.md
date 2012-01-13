@@ -5,7 +5,7 @@ This is your personnal assistant. You tell him who is important to you, and he
 will make sure you always have the latest contact infos about them. Printed on
 paper.
 
-how it works
+How it works
 ------------
 
 Say you have a directory full of *<contact-name>.md* files in it.  
@@ -45,7 +45,8 @@ That's it!
 Installation
 ------------
 
-If i got your attention this far, it's a miracle. The following is pretty easy.
+If i got your attention this far, it's a miracle (or your name is Julien
+Desrosiers). The following should be pretty easy.
 
 1. Clone the repository: `$ git clone git://github.com/juliend2/contact_printer.git`
 2. `cd contact_printer` then `rake install`
