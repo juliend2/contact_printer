@@ -26,10 +26,19 @@ module ContactPrinter
       end
     end
 
+    def emails
+      lines = (text + "\n\n").match(/Emails\n------\n(.*?)\n\n/m)[1]
+      if lines
+        "<ul>" << lines.split(/\n/).map{ |l| 
+          "<li>#{ l.match(/\* (.*)/)[1] }</li>" 
+        }.join('') << "</ul>"
+      end
+    end
+
     def to_html
       %{<h2>#{name}</h2>
 #{phones}
-      }
+#{emails}}
     end
   end
 
