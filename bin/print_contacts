@@ -5,7 +5,7 @@ require 'contact_printer'
 
 args = ARGV.clone
 contacts_path = "#{args[0].chomp('/')}"
-config_path = "#{contacts_path}/contact_print.yml"
+config_path = "#{contacts_path}/contact_printer.yml"
 
 unless File.directory? contacts_path 
   puts "Please provide a valid directory path."
@@ -13,7 +13,7 @@ unless File.directory? contacts_path
 end
 
 unless File.exist?(config_path) && File.file?(config_path)
-  puts "The path you provided does not contain any contact_print.yml configuration file."
+  puts "The path you provided does not contain any contact_printer.yml configuration file."
   exit
 end
 
