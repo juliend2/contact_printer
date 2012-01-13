@@ -48,7 +48,7 @@ module ContactPrinter
         path = "#{dir}/tmp.pdf"
         render.to_file(path)
         puts "Printing..."
-        # system("lpr", path) or raise "lpr failed"
+        system("lpr", path) or raise "lpr failed"
       end
     end
 
