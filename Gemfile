@@ -1,4 +1,7 @@
 source :gemcutter
 
 gem 'pdfkit'
-gem 'rspec'
+
+group :test do
+  gem 'rspec'
+end

@@ -1,4 +1,8 @@
+require 'rubygems'
+require "bundler"
+Bundler.require :default
 require 'yaml'
+require 'tmpdir'
 
 module ContactPrinter
 
@@ -10,6 +14,7 @@ module ContactPrinter
       @contact_files = Dir.glob("#{@path_to_contacts}/*.md")
     end
 
+    # @return Array of Contact objects
     def contacts
       return @contacts unless @contacts.nil?
       @contacts = @contact_files.select {|file| 
@@ -19,12 +24,27 @@ module ContactPrinter
       }
     end
 
+    # @return String
+    def html_contacts
+      contacts.map {|c| "<div class='contact'>" << c.to_html << "</div>" }.join('')
+    end
+
+    # @return Array of String objects
     def selected_contacts
       @config['contacts']
     end
 
     def render
-      kit = PDFKit.new(html, :page_size => 'Letter')
+      return @rendered unless @rendered.nil?
+      @rendered = PDFKit.new(html_contacts, :page_size => 'Letter')
+    end
+
+    def print
+      Dir.mktmpdir do |dir|
+        path = "#{dir}/tmp.pdf"
+        render.to_file(path)
+        system("lpr", path) or raise "lpr failed"
+      end
     end
   end
 
