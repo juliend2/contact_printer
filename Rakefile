@@ -11,12 +11,11 @@ task :build do
   `gem build contact_printer.gemspec`
 end
 
-desc "Re-install the gem from the .gem file. then remove the .gem file."
-task :reinstall => :build do
+desc "installs the gem from the .gem file. then remove the .gem file."
+task :install => :build do
   `gem install contact_printer`
   `rm *.gem`
 end
-
 
 task :default => :spec
 
