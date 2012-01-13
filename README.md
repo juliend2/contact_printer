@@ -42,6 +42,14 @@ by calling him like this:
 
 That's it!
 
+Installation
+------------
+
+If i got your attention this far, it's a miracle. The following is pretty easy.
+
+1. Clone the repository: `$ git clone git://github.com/juliend2/contact_printer.git`
+2. `cd contact_printer` then `rake install`
+
 Limitations
 -----------
 
