@@ -21,6 +21,9 @@ describe ContactPrinter::Contact do
       @julius.to_html.should == %{<h2>Julius Caesar</h2>
 <ul><li>514-555-1673</li><li>514-555-1234</li></ul>
 <ul><li>julius@gmail.com</li><li>julius@hotmail.com</li></ul>}
+      @antony.to_html.should == %{<h2>Antony Chevrolet</h2>
+<ul><li>514-555-1673</li><li>514-555-1234</li></ul>
+}
     end
   end
 end

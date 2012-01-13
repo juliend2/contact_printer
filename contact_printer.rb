@@ -18,7 +18,8 @@ module ContactPrinter
     end
 
     def phones
-      lines = (text + "\n\n").match(/Phones\n------\n(.*?)\n\n/m)[1]
+      lines = (text + "\n\n").match(/Phones\n------\n(.*?)\n\n/m)
+      lines = lines[1] if lines && lines[1]
       if lines
         "<ul>" << lines.split(/\n/).map{ |l| 
           "<li>#{ l.match(/\* (.*)/)[1] }</li>" 
@@ -27,7 +28,8 @@ module ContactPrinter
     end
 
     def emails
-      lines = (text + "\n\n").match(/Emails\n------\n(.*?)\n\n/m)[1]
+      lines = (text + "\n\n").match(/Emails\n------\n(.*?)\n\n/m)
+      lines = lines[1] if lines && lines[1]
       if lines
         "<ul>" << lines.split(/\n/).map{ |l| 
           "<li>#{ l.match(/\* (.*)/)[1] }</li>" 
