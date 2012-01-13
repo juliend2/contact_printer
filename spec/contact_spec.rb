@@ -1,14 +1,12 @@
-require 'rubygems'
-require 'rspec'
-require '../contact_printer'
+require 'spec_helper'
 
 describe ContactPrinter::Contact do
   context "A Contact" do
     before do
-      @antony = ContactPrinter::Contact.new './fixtures/antony-chevrolet.md'
-      @julius = ContactPrinter::Contact.new './fixtures/julius-caesar.md'
-      @john = ContactPrinter::Contact.new './fixtures/john-doe.md'
-      @jean = ContactPrinter::Contact.new './fixtures/jean-qwerty.md'
+      @antony = ContactPrinter::Contact.new 'spec/fixtures/antony-chevrolet.md'
+      @julius = ContactPrinter::Contact.new 'spec/fixtures/julius-caesar.md'
+      @john = ContactPrinter::Contact.new 'spec/fixtures/john-doe.md'
+      @jean = ContactPrinter::Contact.new 'spec/fixtures/jean-qwerty.md'
     end
     it "should have a name" do
       @antony.name.should == 'Antony Chevrolet'
