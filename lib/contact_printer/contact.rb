@@ -1,6 +1,3 @@
-require 'rubygems'
-# require 'pdfkit'
-
 module ContactPrinter
 
   class Contact
@@ -45,7 +42,4 @@ module ContactPrinter
   end
 
 end
-
-# contact_printer = ContactPrinter::Printer.new '/Users/jdesrosiers/Dropbox/perso/contacts'
-# puts contact_printer.contacts[3].to_html
 

@@ -39,7 +39,7 @@ module ContactPrinter
       @rendered = PDFKit.new(html_contacts, :page_size => 'Letter')
     end
 
-    def print
+    def print!
       Dir.mktmpdir do |dir|
         path = "#{dir}/tmp.pdf"
         render.to_file(path)

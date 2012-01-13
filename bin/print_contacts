@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'contact_printer'
+
+args = ARGV.clone
+contacts_path = "#{args[0].chomp('/')}"
+config_path = "#{contacts_path}/contact_print.yml"
+
+unless File.directory? contacts_path 
+  puts "Please provide a valid directory path."
+  exit
+end
+
+unless File.exist?(config_path) && File.file?(config_path)
+  puts "The path you provided does not contain any contact_print.yml configuration file."
+  exit
+end
+
+printer = ContactPrinter::Printer.new(contacts_path, config_path)
+printer.print!
+
+# vim: syntax=ruby

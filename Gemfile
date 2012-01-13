@@ -1,7 +1,4 @@
 source :gemcutter
 
-gem 'pdfkit'
-
-group :test do
-  gem 'rspec'
-end
+# Specify your gem's dependencies in contact_printer.gemspec
+gemspec
